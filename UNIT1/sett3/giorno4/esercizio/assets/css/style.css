@@ -1,0 +1,28 @@
+body, html {
+    text-align: center;
+}
+
+.box {
+    background-color: blue;
+    display: inline-block;
+    width: 32px;
+    margin: 10px;
+    height: 44px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.box p {
+    background-color: rgb(17, 26, 202);
+    color: white;
+    border-radius: 12px;
+}
+
+#table {
+    width: 540px;
+    margin: 50px auto;
+}
+
+.extracted {
+    background-color: red;
+}
