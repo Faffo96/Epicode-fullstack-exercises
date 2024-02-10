@@ -148,9 +148,12 @@ console.log("esercizio funzioni 4: ", deleteOne('ciao sono fabio', false));
 const onlyLetters = (string) => {
   for (let i = 0; i < 10; i++) {
     let cercaNumero = string.indexOf(i);
-
+    let cercaSpazi = string.indexOf('  ')
     if (cercaNumero !== -1) {
       string = string.slice(0, cercaNumero) + string.slice(cercaNumero + 1);
+    }
+    if (cercaSpazi !== -1) {
+      string = string.slice(0, cercaSpazi) + string.slice(cercaSpazi + 1);
     }
   }
   return string;
@@ -198,19 +201,23 @@ console.log("esercizio funzioni 7: ", whatDayIsIt());
   }
 */
 
+console.log("esercizio funzioni 8: ")
+
 const rollTheDices = (n) => {
   let values = [];
+  let object = {};
   let sum = 0;
-  console.log("esercizio funzioni 8: ")
+
   for (let i = 0; i < n; i++) {
     let dadoN = dice();
-    console.log(i +". tiro: " + dadoN)
     values.push(dadoN);
     sum += dadoN;
-  } return sum;
+    object.sum = sum;
+    object.values = values;
+  } return object;
 }
-
-console.log("Somma: " + rollTheDices(3));
+console.log("Somma: ");
+console.log(rollTheDices(3));
 
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
@@ -377,8 +384,8 @@ const movies = [
 */
 
 const deleteProp = (object, prop) => {
-delete object[prop];
-return object;
+  delete object[prop];
+  return object;
 }
 
 /* console.log("esercizio array & oggetti 12: ", deleteProp(movies[0], 'Year')); */
@@ -390,7 +397,7 @@ return object;
 const newestMovie = () => {
   let newestFilm = movies[0].Year;
   movies.forEach((movie, i) => {
-    if (parseInt(movie.Year) > parseInt(newestFilm)){
+    if (parseInt(movie.Year) > parseInt(newestFilm)) {
       newestFilm = movie;
     }
   });
@@ -404,9 +411,6 @@ console.log("esercizio array & oggetti 13: ", newestMovie());
 */
 
 const countMovies = () => {
-  /* movies.forEach((element, i) => {
-    
-  }); */
   return movies.length;
 }
 
@@ -419,7 +423,7 @@ console.log("esercizio array & oggetti 14: ", countMovies());
 const onlyTheYears = () => {
   const array = movies.map(movie => {
     return movie.Year;
-  }) 
+  })
   return array;
 }
 
@@ -430,7 +434,7 @@ console.log("esercizio array & oggetti 15: ", onlyTheYears());
 */
 
 const onlyInLastMillennium = () => {
-  let film1000 = movies.filter(function(movie){
+  let film1000 = movies.filter(function (movie) {
     return movie.Year < 2000;
   })
   return film1000;
@@ -443,7 +447,7 @@ console.log("esercizio array & oggetti 16: ", onlyInLastMillennium());
 */
 
 const sumAllTheYears = () => {
-  return movies.reduce(function(somma, movie) {
+  return movies.reduce(function (somma, movie) {
     return somma + parseInt(movie.Year);
   }, 0)
 }
@@ -457,9 +461,10 @@ console.log("esercizio array & oggetti 17: ", sumAllTheYears());
 const searchByTitle = (string) => {
   string = string.toLowerCase();
   let match = []
+
   movies.forEach(movie => {
     let titoloMinuscolo = movie.Title.toLowerCase();
-    if(titoloMinuscolo.includes(string)) {
+    if (titoloMinuscolo.includes(string)) {
       match.push(movie);
     }
   });
@@ -474,26 +479,27 @@ console.log("esercizio array & oggetti 18: ", searchByTitle("Lord of The"));
 */
 
 const searchAndDivide = (string) => {
-    string = string.toLowerCase();
-    let matched = [];
-    let unmatched = [];
-    let searched = {};
-    movies.forEach(movie => {
-      let titoloMinuscolo = movie.Title.toLowerCase();
-      if(titoloMinuscolo.includes(string)) {
-        matched.push(movie);
-      } else {
-        unmatched.push(movie);
-      }
-    });
+  string = string.toLowerCase();
+  let matched = [];
+  let unmatched = [];
+  let searched = {};
 
-    searched.match = matched;
-    searched.unmatch = unmatched;
+  movies.forEach(movie => {
+    let titoloMinuscolo = movie.Title.toLowerCase();
+    if (titoloMinuscolo.includes(string)) {
+      matched.push(movie);
+    } else {
+      unmatched.push(movie);
+    }
+  });
 
-    return searched;
-  }
+  searched.match = matched;
+  searched.unmatch = unmatched;
 
-  console.log("esercizio array & oggetti 19: ", searchAndDivide("Endgame"));
+  return searched;
+}
+
+console.log("esercizio array & oggetti 19: ", searchAndDivide("Endgame"));
 
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
@@ -543,7 +549,7 @@ const printAll = (tag) => {
 
 function AddRedBgToLinks() {
   const links = Array.from(document.getElementsByTagName('a'));
-    links.forEach(link => {
+  links.forEach(link => {
     link.style.backgroundColor = 'red';
   });
 }
@@ -559,7 +565,7 @@ function AddRedBgToLinks() {
 function addLi() {
   let newElement = document.createElement('li');
   newElement.innerText = 'Nuovo elemento';
-  
+
   const lista = document.getElementById('myList');
   lista.appendChild(newElement);
 }
@@ -607,8 +613,8 @@ const halfTree = (n) => {
     print += '*';
   }
 }
-
-console.log("esercizio JS Avanzato 27: ", halfTree(3));
+console.log("esercizio JS Avanzato 27: ")
+halfTree(10)
 
 
 
@@ -630,32 +636,32 @@ const tree = (n) => {
   for (let i = 1; i < n; i++) {
     print = ' ' + print;
   }
-    console.log(print);
-    print = print.slice(1);
-
-  for (let i = 1; i < n; i++) {
-  print += '*' + '*';
   console.log(print);
   print = print.slice(1);
+
+  for (let i = 1; i < n; i++) {
+    print += '*' + '*';
+    console.log(print);
+    print = print.slice(1);
   }
 }
 
-console.log("esercizio JS Avanzato 28: ", tree(3));
-
+console.log("esercizio JS Avanzato 28: ");
+tree(2);
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
 
 const isItPrime = (n) => {
-  if(n !== 2 && n !== 3 && n !== 5 && n !== 7) {
-  if (n % 2 === 0 || n % 3 === 0 || n % 5  === 0 || n % 7 === 0) {
-    return false;
+  if (n !== 2 && n !== 3 && n !== 5 && n !== 7) {
+    if (n % 2 === 0 || n % 3 === 0 || n % 5 === 0 || n % 7 === 0) {
+      return false;
+    } else {
+      return true;
+    }
   } else {
     return true;
   }
-} else {
-  return true;
-}
 }
 
 console.log("esercizio JS Avanzato 29: ", isItPrime(17));
