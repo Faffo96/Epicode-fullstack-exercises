@@ -4,7 +4,7 @@
 const documentTable = document.getElementById('table');
 const documentExtractionDisplay = document.querySelector('#extraction h2');
 console.log(documentExtractionDisplay)
-let numbers = [];
+
 let extractedNumbers = [];
 let cartelle = [];
 const extractButton = document.querySelector('#extraction input');
@@ -17,6 +17,7 @@ const resetBtn = document.getElementById('reset')
 // Un testo (l'indice del ciclo) ai figli delle singole caselle.
 
 const createTable = () => {
+    let numbers = [];
     for (let i = 1; i <= 90; i++) {
         let newDiv = document.createElement('div');
         newDiv.classList.add('box');
