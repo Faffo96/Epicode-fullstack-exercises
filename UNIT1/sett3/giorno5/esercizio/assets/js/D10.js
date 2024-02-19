@@ -664,4 +664,4 @@ const isItPrime = (n) => {
   }
 }
 
-console.log("esercizio JS Avanzato 29: ", isItPrime(17));
+console.log("esercizio JS Avanzato 29: ", isItPrime(121));
