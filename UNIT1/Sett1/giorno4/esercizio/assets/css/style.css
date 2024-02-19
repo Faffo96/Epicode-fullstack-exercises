@@ -1,5 +1,6 @@
 .body {
     background-image: url('../img/sfondo.png');
+    font-family: "Roboto", sans-serif;
 }
 
 .header {
@@ -32,3 +33,6 @@
     margin-bottom: 0;
 }
 
+.author {
+    color: rgb(152, 151, 151);
+}
